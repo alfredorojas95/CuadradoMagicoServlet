@@ -32,7 +32,7 @@
     </style>
 <body>
 			<h1>Cuadrado Mágico</h1>	
-		<form action="CuadradoMagicoServlet" method="get">
+		<form action="CuadradoMagicsServlet" method="get">
 		<table>
 
 			<tr>
@@ -53,10 +53,12 @@
 				<td><input class="entrada" type="text" name="cor22" requiered></input></td>
 			</tr>
 
-
-
 		</table>
+		<input type="submit" value="Verificar"><br>
+		
+		${mensaje}
+		
 		</form>	
-		<input type="submit" value="Verificar">
+		
 </body>
 </html>

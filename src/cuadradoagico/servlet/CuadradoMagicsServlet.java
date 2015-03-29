@@ -19,8 +19,14 @@ public class CuadradoMagicsServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	private int [][]cuadrado;
+	private boolean gano;
+	met_Cuadrado met = new met_Cuadrado();
+	
     public CuadradoMagicsServlet() {
         super();
+        this.cuadrado =new int[3][3];
+        this.gano=false;
         // TODO Auto-generated constructor stub
     }
 
@@ -39,7 +45,27 @@ public class CuadradoMagicsServlet extends HttpServlet {
 		String cor20 = request.getParameter("cor20");
 		String cor21 = request.getParameter("cor21");
 		String cor22 = request.getParameter("cor22");
+		
+		
+		cuadrado[0][0]=Integer.parseInt(cor00);
+		cuadrado[0][1]=Integer.parseInt(cor01);
+		cuadrado[0][2]=Integer.parseInt(cor02);
+		cuadrado[1][0]=Integer.parseInt(cor10);
+		cuadrado[1][1]=Integer.parseInt(cor11);
+		cuadrado[1][2]=Integer.parseInt(cor12);
+		cuadrado[2][0]=Integer.parseInt(cor20);
+		cuadrado[2][1]=Integer.parseInt(cor21);
+		cuadrado[2][2]=Integer.parseInt(cor22);
+		
 
+		gano= met.sumar(cuadrado);
+		if(gano==true){
+			request.setAttribute("mensaje", "Felicidades, has completado el cuadrado mágico!!!");	
+		}else {
+			request.setAttribute("mensaje", "Has fallado,inténtalo nuevamente!!!");
+		}
+		request.getRequestDispatcher("/Cuadradojsp.jsp").forward(request, response);
+		
 	}
 
 	/**
@@ -48,5 +74,9 @@ public class CuadradoMagicsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
+	
+
+	
+
 
 }
